@@ -1,0 +1,188 @@
+@prefix : <http://www.semanticweb.org/lenovo/ontologies/2022/2/university#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/lenovo/ontologies/2022/2/university> .
+
+<http://www.semanticweb.org/lenovo/ontologies/2022/2/university> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#admits
+:admits rdf:type owl:ObjectProperty ;
+        rdfs:domain :buzz ;
+        rdfs:range :lessons ;
+        rdfs:comment "admits or recognises new buyer"@en .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#learn
+:learn rdf:type owl:ObjectProperty ;
+       rdfs:domain :lessons ;
+       rdfs:range :services .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#products
+:products rdf:type owl:ObjectProperty ;
+          owl:equivalentProperty owl:topObjectProperty ;
+          rdfs:domain :services ;
+          rdfs:range :lessons ;
+          rdfs:comment "purchases of services"@en .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdfs:comment "data"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#sellerID
+:sellerID rdf:type owl:DatatypeProperty ;
+          owl:equivalentProperty :services ;
+          rdfs:domain :services ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#services
+:services rdf:type owl:DatatypeProperty ;
+          owl:equivalentProperty :userID ;
+          rdfs:domain :services .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#userID
+:userID rdf:type owl:DatatypeProperty ;
+        rdfs:domain :buzz ;
+        rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#buzz
+:buzz rdf:type owl:Class ;
+      rdfs:comment "a list of people"@en .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#lessons
+:lessons rdf:type owl:Class ;
+         rdfs:comment "lessons and services offered"@en .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#services
+:services rdf:type owl:Class ;
+          rdfs:subClassOf :services .
+
+
+###  http://www.w3.org/2002/07/owl#Thing
+owl:Thing rdfs:subClassOf :services ;
+          rdfs:comment "ontology of school business setup"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#computer_hardware
+:computer_hardware rdf:type owl:NamedIndividual ,
+                            :lessons ;
+                   :learn :computer_hardware ;
+                   :sellerID "S76654"^^xsd:string ;
+                   rdfs:comment "This anoints that the user will have to purchase computer hardware lessons"@en .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#computer_science
+:computer_science rdf:type owl:NamedIndividual ,
+                           :services ;
+                  :services """html
+css
+javascript
+swift
+react (js $ native)
+flutter"""@en .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#cosmo
+:cosmo rdf:type owl:NamedIndividual ,
+                :buzz ;
+       :admits :cosmo ;
+       :userID ""^^xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#freelance_coaching
+:freelance_coaching rdf:type owl:NamedIndividual ,
+                             :services ;
+                    :products :computer_science ,
+                              :freelance_coaching ;
+                    :services """upwork coaching
+fiverr coaching
+data analysiis and statistics"""@en .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#mathematics
+:mathematics rdf:type owl:NamedIndividual ,
+                      :lessons ;
+             :learn :mathematics ;
+             :sellerID "S12212"^^xsd:string ;
+             rdfs:comment "This anoints that the user will have to purchase mathematics lessons"@en .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#morty
+:morty rdf:type owl:NamedIndividual ,
+                :buzz ;
+       :admits :morty ;
+       :userID "S10008"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#python
+:python rdf:type owl:NamedIndividual ,
+                 :services ;
+        :services """nampy
+ta-lib
+pandas
+tensorflow
+etc"""@en .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#rick
+:rick rdf:type owl:NamedIndividual ,
+               :buzz ;
+      :admits :rick ;
+      :userID "S10009"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#software
+:software rdf:type owl:NamedIndividual ;
+          :sellerID "S20001"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#undergraduate_courses
+:undergraduate_courses rdf:type owl:NamedIndividual ,
+                                :lessons ;
+                       :learn :undergraduate_courses ;
+                       :services "S43454"^^xsd:string ,
+                                 """business and administration courses
+information technology
+software engeneering"""@en .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2022/2/university#wander
+:wander rdf:type owl:NamedIndividual ,
+                 :buzz ;
+        :admits :wander ;
+        :userID "S56744"^^xsd:string .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:services rdfs:comment "services offered for sale"@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
