@@ -1,2 +1,2 @@
-# OWL-ontology-Java-
-a web-based ontology based on protege for its api design / development
+# OWL-ontology-Java- 🚀
+a simple web-based ontology based on protege for its api design / development
